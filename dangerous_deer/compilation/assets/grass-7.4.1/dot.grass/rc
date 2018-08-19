@@ -1,0 +1,4 @@
+LOCATION_NAME: test_location
+GISDBASE: /
+MAPSET: PERMANENT
+GUI: gui
