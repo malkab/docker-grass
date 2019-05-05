@@ -13,6 +13,7 @@ apt-get update
 apt-get -y install \
     build-essential \
     unzip \
+    curl \
     apt-file \
     libcairo2-dev \
     less \

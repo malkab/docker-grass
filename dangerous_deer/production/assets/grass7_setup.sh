@@ -6,6 +6,7 @@ apt-get update
 
 apt-get install -y \
     python \
+    curl \
     python-pip \
     locales \
     w3m \
