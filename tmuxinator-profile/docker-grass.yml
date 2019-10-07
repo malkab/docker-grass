@@ -1,0 +1,8 @@
+name: XXX
+root: /Users/git/XXX/
+
+windows:
+        - docker-dev: cd docker/dev ; sleep 0.5 ; clear
+        - dropbox: cd /Users/malkab/Dropbox/tags/00-wip/XXX ; sleep 0.5 ; clear
+        - frontend: cd XXX ; sleep 0.5 ; clear
+        - backend: cd XXX ; sleep 0.5 ; clear
