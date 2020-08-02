@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# ---------------------------
+#
+# Common settings for all contexts.
+#
+# ---------------------------
+#
+# Prefix variables with MLKC_.
+#
+# ---------------------------
+
+# Sets some env variables for the building process
+export MLKC_DOCKER_IMAGE_TAG=gargantuan_giraffe
+export MLKC_GRASS_VERSION=7.8.3
+export MLKC_GRASS_INSTALL_FOLDER_SUFFIX=78
+export MLKC_GDAL_VERSION=3.1.2

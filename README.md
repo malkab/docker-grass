@@ -18,5 +18,22 @@ Images created:
 
 	- Python 2 (this GRASS release can't be built against Python 3);
 
-	- GRASS 7.4, with WX Python.
+	- GRASS 7.4, with WX Python;
 
+- **gargantuan_giraffe:** released 2020-08-02. Contains the following software:
+
+	- Ubuntu 2020.04;
+
+	- PostgreSQL 12.3;
+
+	- GEOS 3.8.1;
+
+	- Proj 7.1.0;
+
+	- GDAL 3.1.2;
+
+	- PostGIS 3.1.0alpha2;
+
+	- Python 3;
+
+	- GRASS 7.8.3: the wxPython GUI doesn't work yet because the version shipped with the Ubuntu 2020.04 packages (4.1.0) is not compatible with this version of GRASS. Waiting for a fix.
