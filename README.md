@@ -11,7 +11,7 @@ Images created:
 	- GEOS 3.6.3;
 
 	- PROJ4 4.9.3;
-	
+
 	- GDAL 2.3.1;
 
 	- PostGIS 2.4.4, with Python 2 as PL/Python language;
@@ -34,6 +34,26 @@ Images created:
 
 	- PostGIS 3.1.0alpha2;
 
-	- Python 3;
+	- Python 3.6;
 
 	- GRASS 7.8.3: the wxPython GUI doesn't work yet because the version shipped with the Ubuntu 2020.04 packages (4.1.0) is not compatible with this version of GRASS. Waiting for a fix.
+
+	- ImageMagick, with Python Wand as wrapper;
+
+	- VIM;
+
+	- Numpy;
+
+	- Psycopg2;
+
+	- iPython;
+
+	- GeoPandas;
+
+	- Scikit-Learn;
+
+	- GeoAlchemy;
+
+	- Scikit-Image;
+
+	- Rasterio.

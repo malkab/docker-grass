@@ -7,12 +7,12 @@
 # -----------------------------------------------------------------
 #
 # Runs a arbitrary container.
-#  
+#
 # -----------------------------------------------------------------
 
 # Check mlkcontext to check. If void, no check will be performed
 MATCH_MLKCONTEXT=common
-# Custom command to execute, leave blank for using the 
+# Custom command to execute, leave blank for using the
 # image's built-in option
 COMMAND_EXEC=
 # The network to connect to. Remember that when attaching to the network
@@ -26,7 +26,7 @@ CONTAINER_HOST_NAME=
 # The name of the image to pull, without tag
 IMAGE_NAME=malkab/grass_compilation
 # The tag
-IMAGE_TAG=${MLKC_DOCKER_IMAGE_TAG}
+IMAGE_TAG=$MLKC_DOCKER_IMAGE_TAG
 # A set of volumes in the form ("source:destination" "source:destination")
 VOLUMES=(
   $(pwd):/ext_src
@@ -40,7 +40,7 @@ VOLATILE=true
 REPLICAS=
 # Open ports in the form (external:internal external:internal)
 PORTS=()
-# Custom entrypoint, leave blank for using the 
+# Custom entrypoint, leave blank for using the
 # image's built-in option
 ENTRYPOINT=/bin/bash
 # Custom workdir
@@ -79,21 +79,21 @@ docker run -ti --rm \
   -c "grass78 -e -c EPSG:25830 /ext_src/grass_db/default"
 
 
-if [ ! -z "${COMMAND_EXEC}" ] ; then 
+if [ ! -z "${COMMAND_EXEC}" ] ; then
 
   COMMAND_EXEC="-c \"${COMMAND_EXEC}\""
-  
+
 fi
 
 
-if [ ! -z "${NETWORK}" ] ; then 
+if [ ! -z "${NETWORK}" ] ; then
 
   NETWORK="--network=${NETWORK}"
-  
+
 fi
 
 
-if [ "${X11_MAC}" = true ] ; then 
+if [ "${X11_MAC}" = true ] ; then
 
   X11="-e DISPLAY=host.docker.internal:0"
 
@@ -107,7 +107,7 @@ else
 fi
 
 
-if [ "${X11_LINUX}" = true ] ; then 
+if [ "${X11_LINUX}" = true ] ; then
 
   xhost +local:root
 
@@ -120,28 +120,28 @@ else
 fi
 
 
-if [ ! -z "${CONTAINER_NAME}" ] ; then 
+if [ ! -z "${CONTAINER_NAME}" ] ; then
 
   CONTAINER_NAME="--name=${CONTAINER_NAME}"
-  
+
 fi
 
 
 if [ ! -z "${CONTAINER_HOST_NAME}" ] ; then
 
   CONTAINER_HOST_NAME="--hostname=${CONTAINER_HOST_NAME}"
-  
+
 fi
 
 
-if [ ! -z "${ENTRYPOINT}" ] ; then 
+if [ ! -z "${ENTRYPOINT}" ] ; then
 
   ENTRYPOINT="--entrypoint ${ENTRYPOINT}"
-    
+
 fi
 
 
-if [ ! -z "${WORKDIR}" ] ; then 
+if [ ! -z "${WORKDIR}" ] ; then
 
   WORKDIR="--workdir ${WORKDIR}"
 
@@ -211,7 +211,7 @@ if [ ! -z "$REPLICAS" ] ; then
           $IMAGE_NAME:$IMAGE_TAG \
           $COMMAND_EXEC
 
-  done 
+  done
 
 else
 
