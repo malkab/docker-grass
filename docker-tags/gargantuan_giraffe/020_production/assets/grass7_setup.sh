@@ -62,6 +62,7 @@ apt-get install -y \
   libnotify4 \
   libsdl1.2debian \
   libspatialindex6 \
+  python3-gi-cairo \
   vim \
   mlocate \
   imagemagick
@@ -102,4 +103,7 @@ pip install \
   psycopg2-binary \
   ipython \
   GeoAlchemy2 \
-  wand
+  wand \
+  pygments==2.4.1 \
+  jupyter \
+  jupyterlab

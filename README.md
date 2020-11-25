@@ -2,6 +2,8 @@
 
 This repository contains code to create GRASS GIS Docker images. The codes of the images contained in this repo are aligned with the ones at **docker-postgis**, because they serve as base images for the GRASS ones.
 
+This image is X enabled for graphical apps running inside the container, for example, Matplotlib graphics.
+
 Images created:
 
 - **dangerous_deer:** released 2018-08. Contains the following software:
@@ -56,4 +58,6 @@ Images created:
 
 	- Scikit-Image;
 
-	- Rasterio.
+	- Rasterio;
+
+	- Jupyter.
