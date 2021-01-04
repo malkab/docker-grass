@@ -92,6 +92,7 @@ ln -s /usr/bin/ipython3 /usr/bin/ipython
 pip install \
   numpy \
   grass-session \
+  pyreadline \
   psycopg2 \
   geopandas \
   matplotlib \
