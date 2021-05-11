@@ -27,8 +27,11 @@ ADD assets/dot.grass7 /root/.grass7
 ADD assets/grass7_setup.sh /usr/local/bin
 ADD assets/binaries/ /
 ADD assets/keyboard_selections.conf /
+ADD assets/dot.vimrc /root/.vimrc
 
 RUN /usr/local/bin/grass7_setup.sh
 # RUN rm /usr/local/bin/grass7_setup.sh
+
+# ADD assets/dot.bashrc /root/.bashrc
 
 ENTRYPOINT [ "/bin/bash" ]

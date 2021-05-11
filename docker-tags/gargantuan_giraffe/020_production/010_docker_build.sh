@@ -1,7 +1,27 @@
 #!/bin/bash
 
-# Create the GRASS production image
+# Version: 2020-11-19
+
+# -----------------------------------------------------------------
+#
+# Builds the GRASS image.
+#
+# -----------------------------------------------------------------
+#
+# Builds a Docker image.
+#
+# -----------------------------------------------------------------
+
+# Check mlkcontext to check. If void, no check will be performed
 MATCH_MLKCONTEXT=common
+# The name of the image to push
+IMAGE_NAME=malkab/grass
+# The tag
+IMAGE_TAG=$MLKC_DOCKER_IMAGE_TAG
+# Dockerfile
+DOCKERFILE=.
+# Latest? Tag the image as latest, too
+LATEST=true
 
 
 
@@ -9,31 +29,41 @@ MATCH_MLKCONTEXT=common
 
 # ---
 
-# Check mlkcontext
-if [ ! -z "${MATCH_MLKCONTEXT}" ] ; then
+echo -------------
 
-  if [ ! "$(mlkcontext)" = "$MATCH_MLKCONTEXT" ] ; then
+# Check mlkcontext is present at the system
+if command -v mlkcontext &> /dev/null
+then
 
-    echo Please initialise context $MATCH_MLKCONTEXT
+  echo "WORKING AT:     $(mlkcontext)"
 
-    exit 1
+  # Check mlkcontext
+  if [ ! -z "${MATCH_MLKCONTEXT}" ] ; then
+
+    if [ ! "$(mlkcontext)" = "$MATCH_MLKCONTEXT" ] ; then
+
+      echo Please initialise context $MATCH_MLKCONTEXT
+      exit 1
+
+    fi
 
   fi
 
 fi
 
-# Get binaries from the production image
-cd ../010_compilation/
-./040_docker_get_binaries.sh
-cd ../020_production
-
-# Copy binaries from compilation folder and builds production image
-cp -R ../010_compilation/binaries assets/
+echo "BUILDING IMAGE: ${IMAGE_NAME}:${IMAGE_TAG}"
+echo -------------
 
 # Build
 docker build \
-  -t malkab/grass:$MLKC_DOCKER_IMAGE_TAG \
   --build-arg GRASS_VERSION=$MLKC_GRASS_VERSION \
   --build-arg GDAL_VERSION=$MLKC_GDAL_VERSION \
   --build-arg GRASS_INSTALL_FOLDER_SUFFIX=$MLKC_GRASS_INSTALL_FOLDER_SUFFIX \
-  .
+  -t $IMAGE_NAME:$IMAGE_TAG $DOCKERFILE
+
+# Tag latest, if asked
+if [ "${LATEST}" = true ] ; then
+
+  docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
+
+fi
