@@ -1,63 +1,31 @@
 # Docker GRASS GIS
 
-This repository contains code to create GRASS GIS Docker images. The codes of the images contained in this repo are aligned with the ones at **docker-postgis**, because they serve as base images for the GRASS ones.
+This Docker image is created to provide a complete computing environment for OS GIS. It is not designed to be slim, but to serve as a central hub for all GIS processing.
 
-This image is X enabled for graphical apps running inside the container, for example, Matplotlib graphics.
+The tag names of these images are aligned with the ones at **docker-postgis**, since they are the base image for this one. They include:
 
-Images created:
+- everything included in **docker-postgis**:
+	-	PostGIS
+	- Proj
+	- GDAL
+- Python (with IPython and Jupyter), with several key libraries:
+	-	Numpy
+	- GeoPandas
+	- scikit-image
+	- Rasterio
+	- sklearn
+	- WxPython
+	- scipy
+- Node (also included in Jupyter), with:
+	- Mocha
+	- Webpack
+	- SASS
+	- Typedoc
+	- Typescript
 
-- **dangerous_deer:** released 2018-08. Contains the following software:
+This image is X enabled for graphical apps running inside the container, for example, Matplotlib graphics or the GRASS UI.
 
-	- PostgreSQL 10.4;
+Also the image contains several users to map to local:
 
-	- GEOS 3.6.3;
-
-	- PROJ4 4.9.3;
-
-	- GDAL 2.3.1;
-
-	- PostGIS 2.4.4, with Python 2 as PL/Python language;
-
-	- Python 2 (this GRASS release can't be built against Python 3);
-
-	- GRASS 7.4, with WX Python;
-
-- **gargantuan_giraffe:** released 2020-08-02. Contains the following software:
-
-	- Ubuntu 2020.04;
-
-	- PostgreSQL 12.3;
-
-	- GEOS 3.8.1;
-
-	- Proj 7.1.0;
-
-	- GDAL 3.1.2;
-
-	- PostGIS 3.1.0alpha2;
-
-	- Python 3.6;
-
-	- GRASS 7.8.3: the wxPython GUI doesn't work yet because the version shipped with the Ubuntu 2020.04 packages (4.1.0) is not compatible with this version of GRASS. Waiting for a fix.
-
-	- ImageMagick, with Python Wand as wrapper;
-
-	- VIM;
-
-	- Numpy;
-
-	- Psycopg2;
-
-	- iPython;
-
-	- GeoPandas;
-
-	- Scikit-Learn;
-
-	- GeoAlchemy;
-
-	- Scikit-Image;
-
-	- Rasterio;
-
-	- Jupyter.
+- for Linux, UID/GID from 1000/1000 to 1004/1004;
+- for MacOS, UID/GID from 500/20 to 504/20.
