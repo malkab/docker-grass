@@ -1,0 +1,6 @@
+GISDBASE: /ext_src/grass_db
+LOCATION_NAME: default
+MAPSET: PERMANENT 
+GUI: text
+GRASS_HTML_BROWSER: w3m
+GRASS_PYTHON: python3.8
