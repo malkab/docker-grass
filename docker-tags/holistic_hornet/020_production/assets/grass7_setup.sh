@@ -66,9 +66,14 @@ apt-get install -y \
   vim \
   x11-apps \
   mlocate \
+  p7zip-full \
   imagemagick
 
 apt-get -y upgrade
+
+apt-get clean autoclean
+
+apt-get autoremove --yes
 
 ldconfig
 
