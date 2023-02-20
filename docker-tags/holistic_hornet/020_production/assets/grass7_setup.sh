@@ -111,6 +111,7 @@ pip install \
   ipython \
   GeoAlchemy2 \
   wand \
+  ipympl \
   pygments==2.4.1 \
   jupyter \
   jupyterlab \
