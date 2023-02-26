@@ -99,6 +99,9 @@ ln -s /usr/bin/python3 /usr/bin/python
 # Install Python packages
 pip install \
   numpy \
+  virtualenv \
+  readline \
+  ipython \
   grass-session \
   pyreadline \
   psycopg2 \
@@ -113,6 +116,7 @@ pip install \
   ipython \
   GeoAlchemy2 \
   wand \
+  ipympl \
   pygments==2.4.1 \
   jupyter \
   jupyterlab \
