@@ -5,17 +5,19 @@ This Docker image is created to provide a complete computing environment for OS 
 The tag names of these images are aligned with the ones at **docker-postgis**, since they are the base image for this one. They include:
 
 - everything included in **docker-postgis**:
-	-	PostGIS
+	- PostGIS
 	- Proj
 	- GDAL
+
 - Python (with IPython and Jupyter), with several key libraries:
-	-	Numpy
+	- Numpy
 	- GeoPandas
 	- scikit-image
 	- Rasterio
 	- sklearn
 	- WxPython
 	- scipy
+
 - Node (also included in Jupyter), with:
 	- Mocha
 	- Webpack

@@ -1,0 +1,22 @@
+# The PostGIS Docker image tag this image is based on
+docker_image_tag: jelly_jealous
+# Only with 2 version numbers
+# pg_version: 15.3
+
+# Three version number from here
+grass_major_version: 8
+grass_version: "8.3.0"
+node_version: "18.17.0"
+#gdal_version: 3.7.1
+#geos_version: "3.12.0"
+#postgis_version: 3.3.4
+#proj_version: 9.2.1
+#python_version: "3.10"
+#grass_install_folder_suffix: 83
+
+ssh:
+  host: kepler
+  user: malkab
+  port: 22
+  remote_folder: /home/apps/docker-postgis-build
+  pem:

@@ -1,0 +1,42 @@
+FROM malkab/postgis_compilation:[{docker_image_tag}]
+
+LABEL author="Juan Pedro Perez"
+LABEL email="jp.perez.alcantara@gmail.com"
+
+# Build args
+# ARG GRASS_MAJOR_VERSION
+# ARG GRASS_VERSION
+# ARG GDAL_VERSION
+# ARG NODE_VERSION
+# ARG GRASS_INSTALL_FOLDER_SUFFIX
+
+# Load assets
+WORKDIR /usr/local
+ADD assets/keyboard_selections.conf /
+ADD assets/grass/grass-[{grass_version}].tar.gz /
+ADD assets/grass/ld-config-grass.conf /etc/ld.so.conf.d/
+ADD assets/node/node-v[{node_version}].tar.gz /
+ADD assets/locale.gen /etc/locale.gen
+
+# Environment
+ENV GRASS_VERSION [{grass_major_version}]
+ENV GDAL_VERSION [{grass_version}]
+# ENV GRASS_INSTALL_FOLDER_SUFFIX [{grass_install_folder_suffix}]
+ENV LANG es_ES.utf8
+ENV LANGUAGE es_ES.utf8
+ENV LOCALE es_ES.utf8
+ENV LC_ALL es_ES.utf8
+ENV GDAL_DATA /usr/local/share/gdal
+
+
+# ADD assets/grass-${GRASS_VERSION}/dot.grass/ /root/.grass7/
+# ADD assets/dot.bashrc /root/.bashrc
+# ADD assets/dot.vimrc /root/.vimrc
+# ADD assets/grass-${GRASS_VERSION}/dot.grass/ /etc/skel/.grass7/
+# ADD assets/dot.bashrc /etc/skel/.bashrc
+# ADD assets/dot.vimrc /etc/skel/.vimrc
+
+# # Compilation
+# RUN /usr/local/bin/compile_grass.sh
+
+# ENTRYPOINT [ "/usr/local/bin/export_grass_binaries.sh" ]
