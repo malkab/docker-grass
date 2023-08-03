@@ -2,8 +2,8 @@
 
 # -----------------------------------------------------------------
 #
-# Hace el build de una imagen con todos los assets para
-# testear y hacer la compilación.
+# Attach to the compiler container, in case two shell sessions
+# come in handy.
 #
 # -----------------------------------------------------------------
 # Check mlkctxt to check. If void, no check will be performed. If NOTNULL,
@@ -13,22 +13,20 @@ MATCH_MLKCTXT=default
 # Check mlkctxt
 if command -v mlkctxt &> /dev/null ; then
 
-    if [ ! -z "$MATCH_MLKCTXT" ] ; then
+  if [ ! -z "$MATCH_MLKCTXT" ] ; then
 
-        mlkctxtcheck $MATCH_MLKCTXT
+    mlkctxtcheck $MATCH_MLKCTXT
 
-        if [ ! $? -eq 0 ] ; then
+    if [ ! $? -eq 0 ] ; then
 
-        echo Invalid context set, required $MATCH_MLKCTXT
+      echo Invalid context set, required $MATCH_MLKCTXT
 
-        exit 1
-
-        fi
+      exit 1
 
     fi
 
+  fi
+
 fi
 
-docker build \
-    -t malkab/grass_compilation:$(mlkp docker_image_tag) \
-    .
+docker exec -ti grass_compilation_$(mlkp docker_image_tag) /bin/bash

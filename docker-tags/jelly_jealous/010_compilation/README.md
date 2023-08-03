@@ -1,13 +1,32 @@
 # How to Build and Test
 
-- [] This images should match the release tags from **G/docker/postgis**.
+Steps to follow:
 
-- [] Check the compilation image for **PostGIS** and configure the **mlkctxt.yaml** here accordingly.
+- [x] these images should match the release tags from **G/docker/postgis**. Image **malkab/postgis_compilation_final:XXX** must exists;
 
-- [] Download the desired version of **GRASS** and put it into the **010_compilation/assets** folder.
+- [x] check the compilation image for **PostGIS** and configure the **mlkctxt.yaml** here accordingly;
 
-- [] Download the desired version of **Node** and put it into the **010_compilation/assets** folder.
+- [x] download the desired version of **GRASS** and put it into the **010_compilation/assets/grass** folder. If too big, gitignore it and add it to S3;
 
+- [x] download the desired version of **Node** and put it into the **010_compilation/assets/node** folder. If too big, gitignore it and add it to S3;
+
+- [] create the **compilation container** with **020** and test compilation steps with the scripts at **build_scripts**;
+
+
+
+
+
+
+
+In 22.04, there is an incompatibility between PDAL and MySQL development libraries for building GRASS. Therefore, we opted for MySQL:
+
+- **PDAL:** add to dependencies apt-get libpdal-dev
+- **MySQL / MariaDB:** add to apt-get libmariadb-dev and libmariadb-dev-compat
+
+Then, at the GRASS configure, either:
+
+--with-mysql
+--without-pdal
 
 
 

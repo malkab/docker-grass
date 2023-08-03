@@ -2,8 +2,7 @@
 
 # -----------------------------------------------------------------
 #
-# Hace el build de una imagen con todos los assets para
-# testear y hacer la compilación.
+# Removes the compilation image.
 #
 # -----------------------------------------------------------------
 # Check mlkctxt to check. If void, no check will be performed. If NOTNULL,
@@ -29,6 +28,13 @@ if command -v mlkctxt &> /dev/null ; then
 
 fi
 
-docker build \
-    -t malkab/grass_compilation:$(mlkp docker_image_tag) \
-    .
+read -p "WARNING! This will remove both compilation images. Proceed? (y/N): " -t 10 STR
+if [ "$STR" == "y" ] ; then
+
+    docker rmi malkab/grass_compilation:$(mlkp docker_image_tag)
+
+else
+
+	echo skipping...
+
+fi
