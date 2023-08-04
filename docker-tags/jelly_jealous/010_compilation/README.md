@@ -31,6 +31,14 @@ Then, at the GRASS configure, either:
 
 
 
+
+
+El Node hay que bajarlo de aquí: https://nodejs.org/en/download, versión **Linux Binaries (x64)**.
+
+
+
+
+
 Download the binary version of **Node**, put it into the **assets/node-XX.XX.XX** folder, renaming the folder, and renaming the xz file to **node-XX.XX.XX**. This package has the usual bin, include, share, lib folders that will be added to the image.
 
 Change the base **PostGIS** Docker image at the **Dockerfile**.

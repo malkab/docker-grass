@@ -1,0 +1,13 @@
+
+   75  make
+   76  make install
+   77  export GDAL_DRIVER_PATH="/usr/local/lib/gdalplugins"
+   78  gdalinfo --format
+   79  gdalinfo -format
+   80  gdalinfo --help-general
+   81  gdalinfo --formats
+   82  gdalinfo --formats |grep grass
+   83  gdalinfo --formats |grep GRASS
+   84  ogrinfo --formats |grep GRASS
+   85  ll /usr/local/share/gdal/
+   86  history

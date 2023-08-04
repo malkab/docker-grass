@@ -20,6 +20,8 @@ apt-get install -y \
     locales \
     tzdata
 
+ldconfig
+
 dpkg-reconfigure --frontend noninteractive tzdata locales
 
 # Install dependencies
@@ -130,6 +132,7 @@ pip3 install --upgrade pip
 
 pip3 install \
     geopandas \
+    ipython \
     jupyter \
     jupyterlab \
     matplotlib \
@@ -140,8 +143,8 @@ pip3 install \
     pyspark \
     rasterio \
     scikit-image \
-    scipy \
     scikit-learn \
+    scipy \
     wxpython
 
 # Make Python3 default

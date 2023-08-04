@@ -9,14 +9,15 @@ grass_major_version: "8"
 grass_version: "8.3.0"
 node_version: "18.17.0"
 gdal_version: "3.7.1"
+gdal_grass_plugin_version: "1.0.2"
 
 # Install suffix
 grass_install_folder_suffix: 83
 
-# For remote building
-ssh:
-    host: kepler
-    user: malkab
-    port: 22
-    remote_folder: /home/apps/docker-postgis-build
-    pem:
+# Hadoop Spark Versions
+spark_version: "3.4.1"
+hadoop_major_version: "3"
+hadoop_version: "3.3.6"
+
+# Java home, will depend on the Java version in the Ubuntu repo
+java_home: "/usr/lib/jvm/java-11-openjdk-amd64"
