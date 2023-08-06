@@ -2,15 +2,21 @@
 
 Steps to follow:
 
-- [x] these images should match the release tags from **G/docker/postgis**. Image **malkab/postgis_compilation_final:XXX** must exists;
+- [] these images should match the release tags from **G/docker/postgis**. Image **malkab/postgis_compilation_final:XXX** must exists;
 
-- [x] check the compilation image for **PostGIS** and configure the **mlkctxt.yaml** here accordingly;
+- [] check the compilation image for **PostGIS** and configure the **mlkctxt.yaml** here accordingly;
 
-- [x] download the desired version of **GRASS** and put it into the **010_compilation/assets/grass** folder. If too big, gitignore it and add it to S3;
+- [] download the desired version of **GRASS** and put it into the **assets/grass** folder. If too big, gitignore it and add it to S3;
 
-- [x] download the desired version of **Node** and put it into the **010_compilation/assets/node** folder. If too big, gitignore it and add it to S3;
+- [] download the desired version of **Node** and put it into the **assets/node** folder. If too big, gitignore it and add it to S3;
 
-- [] create the **compilation container** with **020** and test compilation steps with the scripts at **build_scripts**;
+- [] download the desired version of **Spark** and **Hadoop** and put it into the **assets/hadoop-spark** folder. Check the **G/docker/spark** for reference;
+
+- [] build the base image qith **010**;
+
+- [] create the **compilation container** with **020**;
+
+- [ ] test compilation steps with the scripts at **build_scripts**;
 
 
 

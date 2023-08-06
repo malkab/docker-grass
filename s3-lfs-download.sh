@@ -12,7 +12,7 @@
 # -----------------------------------------------------------------
 # Check mlkctxt to check. If void, no check will be performed. Use NOTNULL to
 # enforce any context.
-MATCH_MLKCTXT=default
+MATCH_MLKCTXT=
 # Target LFS bucket
 TARGET_BUCKET=s3://mlk-lfs
 # S3 storage class
