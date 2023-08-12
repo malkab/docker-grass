@@ -12,11 +12,8 @@ cd /usr/local/src/grass-$GRASS_VERSION
     --with-gdal \
     --with-blas \
     --with-bzlib \
-    --with-fftw \
     --with-sqlite \
     --with-regex \
-    --with-glw \
-    --with-opengl \
     --with-zlib \
     --enable-64bit \
     --with-python \
@@ -30,11 +27,15 @@ cd /usr/local/src/grass-$GRASS_VERSION
     --with-openmp \
     --with-readline \
     --with-postgres \
-    --with-wxwidgets \
-    --with-cairo \
-    --with-x \
     --with-mysql \
     --without-pdal
+
+#    --with-wxwidgets \
+#    --with-x \
+#     --with-glw \
+#     --with-opengl \
+#     --with-fftw \
+#     --with-cairo \
 
 make
 

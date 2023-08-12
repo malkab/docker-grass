@@ -226,7 +226,7 @@ if [ ! -z "$REPLICAS" ] ; then
 
   for REPLICA in $(seq 1 $REPLICAS) ; do
 
-    eval  $COMMAND_DOCKER \
+    echo  $COMMAND_DOCKER \
           $NETWORK \
           ${CONTAINER_NAME}-${REPLICA} \
           ${CONTAINER_HOST_NAME}-${REPLICA} \
@@ -244,7 +244,7 @@ if [ ! -z "$REPLICAS" ] ; then
 
 else
 
-  eval  $COMMAND_DOCKER \
+  echo  $COMMAND_DOCKER \
           $NETWORK \
           $CONTAINER_NAME_F \
           $CONTAINER_HOST_NAME_F \
