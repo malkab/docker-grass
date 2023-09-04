@@ -1,4 +1,4 @@
-GISDBASE: /ext_src/grass_db
+GISDBASE: ~/grass_db
 LOCATION_NAME: default
 MAPSET: PERMANENT
 GUI: text

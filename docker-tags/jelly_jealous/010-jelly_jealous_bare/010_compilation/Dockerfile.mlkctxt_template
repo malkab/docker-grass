@@ -6,15 +6,10 @@ LABEL email="jp.perez.alcantara@gmail.com"
 # Load assets
 WORKDIR /usr/local/src
 
-ADD assets/grass/grass-[{grass_version}].tar.gz /usr/local/src/
-ADD assets/grass/gdal-grass-[{gdal_grass_plugin_version}].tar.gz /usr/local/src/
-ADD assets/grass/ld-config-grass.conf /etc/ld.so.conf.d/
+ADD assets/grass-[{grass_version}].tar.gz /usr/local/src/
+ADD assets/gdal-grass-[{gdal_grass_plugin_version}].tar.gz /usr/local/src/
+ADD assets/ld-config-grass.conf /etc/ld.so.conf.d/
 ADD assets/locale.gen /etc/locale.gen
-
-
-
-
-
 
 # Environment
 ENV GRASS_MAJOR_VERSION [{grass_major_version}]
@@ -22,20 +17,25 @@ ENV GRASS_VERSION [{grass_version}]
 ENV GDAL_VERSION [{gdal_version}]
 ENV GDAL_GRASS_PLUGIN_VERSION [{gdal_grass_plugin_version}]
 
-# ENV LANG es_ES.UTF-8
-# ENV LANGUAGE es_ES.UTF-8
-# ENV LC_ALL es_ES.UTF-8
+ENV LANG es_ES.UTF-8
+ENV LANGUAGE es_ES.UTF-8
+ENV LC_ALL es_ES.UTF-8
 
 ENV GDAL_DATA /usr/local/share/gdal
 ENV GDAL_DRIVER_PATH /usr/local/lib/gdalplugins/
 ENV GRASS_INSTALL_FOLDER_SUFFIX [{grass_install_folder_suffix}]
 
-
-
-
-
+# Add configs to root home
 ADD assets/dot.bashrc /root/.bashrc
 ADD assets/dot.vimrc /root/.vimrc
-ADD assets/grass/dot.grass/ /etc/skel/.grass[{grass_major_version}]/
+
+# Add configs to root home/.grass
+ADD assets/dot.bashrc/ /root/.grass[{grass_major_version}]/.bashrc
+ADD assets/dot.vimrc/ /root/.grass[{grass_major_version}]/.vimrc
+
+# Configure skel folder
 ADD assets/dot.bashrc /etc/skel/.bashrc
 ADD assets/dot.vimrc /etc/skel/.vimrc
+
+ADD assets/dot.bashrc/ /etc/skel/.grass[{grass_major_version}]/.bashrc
+ADD assets/dot.vimrc/ /etc/skel/.grass[{grass_major_version}]/.vimrc
