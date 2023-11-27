@@ -1,0 +1,7 @@
+[core]
+    remote = origin
+    autostage = true
+[cache]
+    dir = /home/malkab/malkab-sync/dvc/docker/docker-grass
+['remote "origin"']
+    url = /home/malkab/malkab-sync/dvc/docker/docker-grass
