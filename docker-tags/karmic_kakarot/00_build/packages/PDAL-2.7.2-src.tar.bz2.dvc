@@ -1,0 +1,5 @@
+outs:
+- md5: d7158d5e99c15b8e4ea7730aad04341b
+  size: 87431434
+  hash: md5
+  path: PDAL-2.7.2-src.tar.bz2

@@ -6,20 +6,17 @@
 cd /usr/local/src/proj-9.4.1/build
 cmake --build . --target uninstall
 
-proj -v
-
 # INSTALL 9.1.1, temporal until final decision
 
-# cd /usr/local/src/proj-9.1.1
+cd /usr/local/src/proj-9.1.1
 
-# mkdir build
-# cd build
+mkdir build
+cd build
 
-
-# cmake ..
-# cmake --build .
-# cmake --build . --target install
-# projsync --system-directory --all
+cmake ..
+cmake --build .
+cmake --build . --target install
+projsync --system-directory --all
 
 proj -v
 
