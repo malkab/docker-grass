@@ -15,6 +15,7 @@ docker build \
     --build-arg PROJ_VERSION=$PROJ_VERSION \
     --build-arg GRASS_VERSION=$GRASS_VERSION \
     --build-arg PDAL_VERSION=$PDAL_VERSION \
+    --build-arg GDAL_GRASS_VERSION=$GDAL_GRASS_VERSION \
     .
 
     # --no-cache \

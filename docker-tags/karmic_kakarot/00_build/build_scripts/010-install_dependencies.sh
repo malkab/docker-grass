@@ -4,7 +4,9 @@
 
 echo
 echo ---------------------------------------
+echo
 echo Installing packages
+echo
 echo ---------------------------------------
 echo
 
@@ -19,22 +21,10 @@ apt-get install -y \
     libopengl0 \
     libopengl-dev \
     fftw-dev \
-    fftw2
-
-
-apt-get install -y \
+    fftw2 \
+    python3-wxgtk4.0 \
     libcairo2 \
     libcairo2-dev
-
-    # bzip2 \
-    # libzstd-dev \
-    # libzstd1 \
-    # fftw-dev \
-    # fftw2 \
-    # liblapack3 \
-    # liblapacke-dev \
-    # libblas-dev \
-    # libblas3
 
 dpkg-reconfigure --frontend noninteractive tzdata
 

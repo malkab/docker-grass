@@ -6,8 +6,9 @@
 . ../env.sh
 
 docker run -ti --rm \
-    --name grass_${DOCKER_IMAGE_TAG}_test \
-    --hostname grass_${DOCKER_IMAGE_TAG}_test \
+    --name grass_build_test \
+    --hostname grass_build_test \
+    --network=host \
+    -e DISPLAY=$DISPLAY \
     -v $(pwd):/source \
-    --workdir /source \
     malkab/grass_build:${DOCKER_IMAGE_TAG}
