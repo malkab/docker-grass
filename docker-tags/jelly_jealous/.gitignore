@@ -1,8 +1,0 @@
-# Added by mlkctxt - v0.0.2
-# -------------------
-010-jelly_jealous_bare/010_compilation/assets/ld-config-grass.conf
-010-jelly_jealous_bare/010_compilation/Dockerfile
-020-jelly_jealous_gui/000-DEPRECATE/Dockerfile
-020-jelly_jealous_gui/000-DEPRECATE/grassrc
-020-jelly_jealous_gui/010_compilation/assets/ld-config-grass.conf
-020-jelly_jealous_gui/010_compilation/Dockerfile
