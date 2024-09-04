@@ -5,7 +5,7 @@
 # Comment from here on to test build scripts.
 #
 # --------------------------------------
-FROM debian:bookworm
+FROM debian:bookworm AS production
 
 # Environment
 ARG DOCKER_IMAGE_TAG
@@ -96,7 +96,8 @@ RUN apt-get install -y \
     python3 \
     python3-opengl \
     python3-wxgtk4.0 \
-    sudo
+    sudo \
+    git
 
 RUN apt-get -y upgrade && \
     ldconfig
@@ -121,34 +122,37 @@ COPY --from=malkab/grass_build:latest /usr/local/lib/libgeos_c* /usr/local/lib
 COPY --from=malkab/grass_build:latest /usr/local/lib/libgeos* /usr/local/lib
 COPY --from=malkab/grass_build:latest /usr/local/lib/libgdal* /usr/local/lib
 COPY --from=malkab/grass_build:latest /usr/local/lib/libpq* /usr/local/lib
+COPY --from=malkab/postgis_build:latest /usr/local/bin/psql /usr/local/bin/
 
 RUN ldconfig
 
 # Metadata
 RUN echo ${DOCKER_IMAGE_TAG} > /docker_image_tag
 
+ENTRYPOINT [ "/bin/bash" ]
 
-# # --------------------------------------
-# #
-# # Final
-# #
-# # --------------------------------------
-# FROM scratch
 
-# # Environment
-# ARG DOCKER_IMAGE_TAG
-# ENV DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG}
-# ARG GDAL_VERSION
-# ENV GDAL_VERSION=${GDAL_VERSION}
-# ARG GEOS_VERSION
-# ENV GEOS_VERSION=${GEOS_VERSION}
-# ARG POSTGIS_VERSION
-# ENV POSTGIS_VERSION=${POSTGIS_VERSION}
-# ARG PG_VERSION
-# ENV PG_VERSION=${PG_VERSION}
-# ARG PROJ_VERSION
-# ENV PROJ_VERSION=${PROJ_VERSION}
+# --------------------------------------
+#
+# Final
+#
+# --------------------------------------
+FROM scratch
 
-# COPY --from=production / /
+# Environment
+ARG DOCKER_IMAGE_TAG
+ENV DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG}
+ARG GDAL_VERSION
+ENV GDAL_VERSION=${GDAL_VERSION}
+ARG GEOS_VERSION
+ENV GEOS_VERSION=${GEOS_VERSION}
+ARG POSTGIS_VERSION
+ENV POSTGIS_VERSION=${POSTGIS_VERSION}
+ARG PG_VERSION
+ENV PG_VERSION=${PG_VERSION}
+ARG PROJ_VERSION
+ENV PROJ_VERSION=${PROJ_VERSION}
 
-# ENTRYPOINT [ "/bin/bash" ]
+COPY --from=production / /
+
+ENTRYPOINT [ "/bin/bash" ]
