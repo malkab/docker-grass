@@ -97,6 +97,7 @@ RUN apt-get install -y \
     python3-opengl \
     python3-wxgtk4.0 \
     sudo \
+    osm2pgsql \
     git
 
 RUN apt-get -y upgrade && \
@@ -115,13 +116,17 @@ RUN groupadd -g 1000 user1000 && \
 RUN mv /sudoers /etc/sudoers && \
     chmod 0440 /etc/sudoers
 
-# Copy assets from build
+# Copy assets from GRASS build build image
 COPY --from=malkab/grass_build:latest /usr/local/bin/grass /usr/local/bin/grass
 COPY --from=malkab/grass_build:latest /usr/local/grass84 /usr/local/grass84
 COPY --from=malkab/grass_build:latest /usr/local/lib/libgeos_c* /usr/local/lib
 COPY --from=malkab/grass_build:latest /usr/local/lib/libgeos* /usr/local/lib
 COPY --from=malkab/grass_build:latest /usr/local/lib/libgdal* /usr/local/lib
 COPY --from=malkab/grass_build:latest /usr/local/lib/libpq* /usr/local/lib
+COPY --from=malkab/grass_build:latest /usr/local/bin/ogr2ogr /usr/local/bin
+COPY --from=malkab/grass_build:latest /usr/local/share/gdal/ /usr/local/share/gdal/
+
+# From PostGIS build image
 COPY --from=malkab/postgis_build:latest /usr/local/bin/psql /usr/local/bin/
 
 RUN ldconfig
@@ -132,27 +137,27 @@ RUN echo ${DOCKER_IMAGE_TAG} > /docker_image_tag
 ENTRYPOINT [ "/bin/bash" ]
 
 
-# --------------------------------------
-#
-# Final
-#
-# --------------------------------------
-FROM scratch
+# # --------------------------------------
+# #
+# # Final
+# #
+# # --------------------------------------
+# FROM scratch
 
-# Environment
-ARG DOCKER_IMAGE_TAG
-ENV DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG}
-ARG GDAL_VERSION
-ENV GDAL_VERSION=${GDAL_VERSION}
-ARG GEOS_VERSION
-ENV GEOS_VERSION=${GEOS_VERSION}
-ARG POSTGIS_VERSION
-ENV POSTGIS_VERSION=${POSTGIS_VERSION}
-ARG PG_VERSION
-ENV PG_VERSION=${PG_VERSION}
-ARG PROJ_VERSION
-ENV PROJ_VERSION=${PROJ_VERSION}
+# # Environment
+# ARG DOCKER_IMAGE_TAG
+# ENV DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG}
+# ARG GDAL_VERSION
+# ENV GDAL_VERSION=${GDAL_VERSION}
+# ARG GEOS_VERSION
+# ENV GEOS_VERSION=${GEOS_VERSION}
+# ARG POSTGIS_VERSION
+# ENV POSTGIS_VERSION=${POSTGIS_VERSION}
+# ARG PG_VERSION
+# ENV PG_VERSION=${PG_VERSION}
+# ARG PROJ_VERSION
+# ENV PROJ_VERSION=${PROJ_VERSION}
 
-COPY --from=production / /
+# COPY --from=production / /
 
-ENTRYPOINT [ "/bin/bash" ]
+# ENTRYPOINT [ "/bin/bash" ]
