@@ -40,7 +40,24 @@ ADD packages/dot.vimrc /etc/skel/.vimrc
 ADD packages/sudoers /
 ADD packages/fzf /usr/local/bin/
 
-# Copy default configs
+
+# LO SIGUIENTE PUEDE SER MEJORADO TRAYÉNDOSE FICHEROS DE BUILD
+# # Locales
+# WORKDIR /
+
+# COPY --from=malkab/r_build:latest /etc/locale.gen /etc/locale.gen
+
+# # Setup the container
+# RUN ln -fs /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+
+# # Packages
+# RUN apt-get update && \
+#     apt-get install -yf \
+#         locales
+
+# Y QUIZÁS UN locale-gen final, no sé seguro
+
+# Locales
 WORKDIR /
 
 COPY packages/keyboard_selections.conf /

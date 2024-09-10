@@ -5,7 +5,7 @@
 
 echo Building image $DOCKER_IMAGE_TAG
 
-docker build \
+docker build --force-rm \
     -t malkab/grass:$DOCKER_IMAGE_TAG \
     --build-arg DOCKER_IMAGE_TAG=$DOCKER_IMAGE_TAG \
     --build-arg GDAL_VERSION=$GDAL_VERSION \
