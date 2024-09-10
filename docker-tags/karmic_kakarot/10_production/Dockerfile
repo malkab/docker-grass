@@ -98,7 +98,9 @@ RUN apt-get install -y \
     python3-wxgtk4.0 \
     sudo \
     osm2pgsql \
-    git
+    git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN apt-get -y upgrade && \
     ldconfig
